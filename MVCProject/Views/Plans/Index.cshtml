@@ -35,7 +35,7 @@
                 @Html.ActionLink("CreatedAt", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
+                @Html.ActionLink("UpdatedAt", "Index", new { sortOrder = ViewBag.DateUpdatedSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
