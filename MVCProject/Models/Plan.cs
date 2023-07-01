@@ -18,10 +18,12 @@ public class Plan{
     public string? Owner { get; set; }
     
     [DataType(DataType.DateTime)]
+    [DisplayFormat(DataFormatString = "{0:MMMM, dd yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
     [Display(Name = "Dátum vytvorenia")]
     public DateTime CreatedAt { get; set; }
     
     [DataType(DataType.DateTime)]
+    [DisplayFormat(DataFormatString = "{0:MMMM, dd yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
     [Display(Name = "Posledná úprava")]
     public DateTime UpdatedAt { get; set; }
 
