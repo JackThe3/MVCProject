@@ -47,6 +47,7 @@ namespace MVCProject.Controllers
             ViewBag.IdSortParm = sortOrder == "Id" ? "id_desc" : "Id";
             ViewBag.OwnerSortParm = sortOrder == "Owner" ? "owner_desc" : "Owner";
             ViewBag.DateUpdatedSortParm = sortOrder == "DateUpdated" ? "dateupdated_desc" : "DateUpdated";
+            ViewBag.StatusSortParm = sortOrder == "Status" ? "status_desc" : "Status";
 
             var plan = from m in _context.Plan
                        select m;
@@ -73,6 +74,9 @@ namespace MVCProject.Controllers
                 case "Owner":
                     plan = plan.OrderBy(s => s.Owner);
                     break;
+                case "Status":
+                    plan = plan.OrderBy(s => s.Status);
+                    break;
                 case "date_desc":
                     plan = plan.OrderByDescending(s => s.CreatedAt);
                     break;
@@ -84,6 +88,9 @@ namespace MVCProject.Controllers
                     break;
                 case "owner_desc":
                     plan = plan.OrderByDescending(s => s.Owner);
+                    break;
+                case "status_desc":
+                    plan = plan.OrderByDescending(s => s.Status);
                     break;
                 default:
                     plan = plan.OrderBy(s => s.Name);
