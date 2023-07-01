@@ -45,6 +45,7 @@ namespace MVCProject.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.IdSortParm = sortOrder == "Id" ? "id_desc" : "Id";
+            ViewBag.OwnerSortParm = sortOrder == "Owner" ? "owner_desc" : "Owner";
 
             var plan = from m in _context.Plan
                        select m;
@@ -65,11 +66,17 @@ namespace MVCProject.Controllers
                 case "Id":
                     plan = plan.OrderBy(s => s.Id);
                     break;
+                case "Owner":
+                    plan = plan.OrderBy(s => s.Owner);
+                    break;
                 case "date_desc":
                     plan = plan.OrderByDescending(s => s.CreatedAt);
                     break;
                 case "id_desc":
                     plan = plan.OrderByDescending(s => s.Id);
+                    break;
+                case "owner_desc":
+                    plan = plan.OrderByDescending(s => s.Owner);
                     break;
                 default:
                     plan = plan.OrderBy(s => s.Name);
