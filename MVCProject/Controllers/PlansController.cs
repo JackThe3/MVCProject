@@ -20,15 +20,39 @@ namespace MVCProject.Controllers
         }
 
         // GET: Plans
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string sortOrder,string searchString)
         {
+           
+
             if (_context.Plan == null)
             {
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
             }
 
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
             var plan = from m in _context.Plan
-                         select m;
+                       select m;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    plan = plan.OrderByDescending(s => s.Owner);
+                    break;
+                case "Date":
+                    plan = plan.OrderBy(s => s.CreatedAt);
+                    break;
+                case "date_desc":
+                    plan = plan.OrderByDescending(s => s.CreatedAt);
+                    break;
+                default:
+                    plan = plan.OrderBy(s => s.Name);
+                    break;
+            }
+
+
+           
 
             if (!String.IsNullOrEmpty(searchString))
             {
