@@ -22,26 +22,26 @@
     <thead>
         <tr>
             <th>
-                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter=ViewBag.CurrentFilter })
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Name).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("Owner", "Index", new { sortOrder = ViewBag.OwnerSortParm, currentFilter=ViewBag.CurrentFilter })
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Owner).ToString(), "Index", new { sortOrder = ViewBag.OwnerSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParm, currentFilter=ViewBag.CurrentFilter })
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Id).ToString(), "Index", new { sortOrder = ViewBag.IdSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
 
-                @Html.ActionLink("CreatedAt", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter=ViewBag.CurrentFilter })
+                @Html.ActionLink(Html.DisplayNameFor(model => model.CreatedAt).ToString(), "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("UpdatedAt", "Index", new { sortOrder = ViewBag.DateUpdatedSortParm, currentFilter=ViewBag.CurrentFilter })
+                @Html.ActionLink(Html.DisplayNameFor(model => model.UpdatedAt).ToString(), "Index", new { sortOrder = ViewBag.DateUpdatedSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm, currentFilter=ViewBag.CurrentFilter })
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Status).ToString(), "Index", new { sortOrder = ViewBag.StatusSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("UpdatedBy", "Index", new { sortOrder = ViewBag.UpdatedBySortParm, currentFilter=ViewBag.CurrentFilter })
+                @Html.ActionLink(Html.DisplayNameFor(model => model.UpdatedBy).ToString(), "Index", new { sortOrder = ViewBag.UpdatedBySortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th></th>
         </tr>
