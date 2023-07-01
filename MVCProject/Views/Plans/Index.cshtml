@@ -41,7 +41,7 @@
                 @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UpdatedBy)
+                @Html.ActionLink("UpdatedBy", "Index", new { sortOrder = ViewBag.UpdatedBySortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th></th>
         </tr>
