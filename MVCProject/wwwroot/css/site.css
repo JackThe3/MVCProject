@@ -20,7 +20,3 @@ html {
 body {
   margin-bottom: 60px;
 }
-
-input[id="CreatedAt"]:read-only {
-    background: #ccc;
-}
