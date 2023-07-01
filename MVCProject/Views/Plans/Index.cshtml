@@ -49,10 +49,10 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
+                @Convert.ToDateTime(item.CreatedAt).ToString("dddd, dd MMMM yyyy HH:mm:ss")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
+                @Convert.ToDateTime(item.UpdatedAt).ToString("dddd, dd MMMM yyyy HH:mm:ss")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

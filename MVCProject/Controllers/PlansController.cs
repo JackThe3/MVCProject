@@ -54,10 +54,16 @@ namespace MVCProject.Controllers
         // POST: Plans/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //
+        // **
+        //
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Owner,CreatedAt,UpdatedAt,Status,UpdatedBy")] Plan plan)
+        public async Task<IActionResult> Create([Bind("Id,Name,Owner,Status,UpdatedBy")] Plan plan)
         {
+            plan.CreatedAt = DateTime.Now;
+            plan.UpdatedAt = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 _context.Add(plan);
@@ -88,17 +94,19 @@ namespace MVCProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Owner,CreatedAt,UpdatedAt,Status,UpdatedBy")] Plan plan)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Owner,CreatedAt,Status,UpdatedBy")] Plan plan)
         {
+
             if (id != plan.Id)
             {
                 return NotFound();
             }
-
+            
             if (ModelState.IsValid)
             {
                 try
                 {
+                    plan.UpdatedAt = DateTime.Now;
                     _context.Update(plan);
                     await _context.SaveChangesAsync();
                 }
