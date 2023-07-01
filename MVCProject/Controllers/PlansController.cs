@@ -55,7 +55,14 @@ namespace MVCProject.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                plan = plan.Where(s => s.Name!.Contains(searchString));
+                if (Int32.TryParse(searchString, out int j))
+                {
+                    plan = plan.Where(s => s.Id!.Equals(j));
+                }
+                else {
+                    plan = plan.Where(s => s.Name!.Contains(searchString));
+                }
+               
             }
 
             switch (sortOrder)
