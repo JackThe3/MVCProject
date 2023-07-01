@@ -28,7 +28,7 @@
                 @Html.DisplayNameFor(model => model.Owner)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
 
