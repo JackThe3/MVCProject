@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MVCProject.Data;
 using MVCProject.Models;
 
@@ -20,25 +21,42 @@ namespace MVCProject.Controllers
         }
 
         // GET: Plans
-        public async Task<IActionResult> Index(string sortOrder,string searchString)
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
         {
-           
+            return "From [HttpPost]Index: filter on " + searchString;
+        }
 
+        public async Task<IActionResult> Index(string sortOrder,string searchString, string currentFilter)
+        {
             if (_context.Plan == null)
             {
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
             }
 
+            if (searchString.IsNullOrEmpty())
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
             var plan = from m in _context.Plan
                        select m;
 
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                plan = plan.Where(s => s.Name!.Contains(searchString));
+            }
+
             switch (sortOrder)
             {
                 case "name_desc":
-                    plan = plan.OrderByDescending(s => s.Owner);
+                    plan = plan.OrderByDescending(s => s.Name);
                     break;
                 case "Date":
                     plan = plan.OrderBy(s => s.CreatedAt);
@@ -54,10 +72,7 @@ namespace MVCProject.Controllers
 
            
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                plan = plan.Where(s => s.Name!.Contains(searchString));
-            }
+           
 
             return View(await plan.ToListAsync());
         }

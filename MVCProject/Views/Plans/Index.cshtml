@@ -10,9 +10,10 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-<form asp-controller="Plans" asp-action="Index">
+<form asp-controller="Plans" asp-action="Index" method="get">
+
     <p>
-        Title: <input type="text" name="SearchString" />
+        Title: <input type="text" name="searchString" value="@ViewBag.CurrentFilter" />
         <input type="submit" value="Filter" />
     </p>
 </form>
@@ -21,7 +22,7 @@
     <thead>
         <tr>
             <th>
-                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Owner)
@@ -30,7 +31,8 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.ActionLink("CreatedAt", "Index", new { sortOrder = ViewBag.DateSortParm })
+
+                @Html.ActionLink("CreatedAt", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter=ViewBag.CurrentFilter })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UpdatedAt)
