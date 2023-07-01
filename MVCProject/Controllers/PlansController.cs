@@ -20,11 +20,22 @@ namespace MVCProject.Controllers
         }
 
         // GET: Plans
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return _context.Plan != null ? 
-                          View(await _context.Plan.ToListAsync()) :
-                          Problem("Entity set 'MVCProjectContext.Plan'  is null.");
+            if (_context.Plan == null)
+            {
+                return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
+            }
+
+            var plan = from m in _context.Plan
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                plan = plan.Where(s => s.Name!.Contains(searchString));
+            }
+
+            return View(await plan.ToListAsync());
         }
 
         // GET: Plans/Details/5
