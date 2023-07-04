@@ -12,25 +12,52 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Plans" asp-action="Index">Plan App</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+              
+                   
+                <!-- Get the hide/apper effect but without the style -->
+                <!-- Left Element -->
+               
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <div class="dropdown">
+                            <button class="btn " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-list" style="color: white ; font-size: 30px;"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark info" asp-area="" asp-controller="Home" asp-action="Index" style="color:black !important">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark info" asp-area="" asp-controller="Home" asp-action="Privacy" style="color:black !important" >Privacy</a>
+                                </li>
+                            </ul>
+                        </div>
+                       
                     </ul>
-                </div>
+
+                
+                <!-- End Left Element -->
+                <!-- Center Element -->
+                
+                    <ul class="navbar-nav me-auto pb-2 pb-lg-0 m-auto">
+                        <li><a class="navbar-brand" asp-area="" asp-controller="Plans" asp-action="Index">Plan App</a></li>
+                    </ul>
+              
+                <!-- End Center Element -->
+                <!-- Right Element -->
+              
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li> <img src="https://www.partnersgroup.sk/themes/partnersgroup/assets/images/logo/pgsk-logo-small.png" class="logo"></li>
+                    </ul>
+                
+                <!-- End Right Element -->
             </div>
         </nav>
+        
+       
     </header>
     <div class="container-fluid p-5 overflow-hidden" style="background-color: #f9fafa">
         <main role="main" class="pb-3">

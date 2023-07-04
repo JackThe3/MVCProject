@@ -1,4 +1,24 @@
-﻿.tablename {
+﻿.navbar {
+    min-height: 80px;
+    background-color: #921337;
+    color: white;
+}
+
+.logo {
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+.navbar-brand{
+    color: white !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+
+.tablename {
     padding-top: 18px !important;
     padding-bottom: 18px !important;
     font-size: 18px;
@@ -8,6 +28,14 @@
     font-size: 12px;
     text-decoration: none;
     color: gray;
+}
+
+.navbar-header {
+    text-align: center;
+}
+
+ul {
+    text-align: center
 }
 
 .info {
