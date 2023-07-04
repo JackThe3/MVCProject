@@ -4,13 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-
 <h1>Details</h1>
 
-
-
 <div>
-    <hr/>
+<hr/>
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -73,6 +70,4 @@
         </span>
     </a>
     @Html.ActionLink("Edit", "Edit", new { controller = "Plans",  id = @Model?.Id}, new { @class = "btn w-10 ", @style = " background-color: #921337 !important; color: white; border-radius: 10px;" })
-    
-    
 </div>
