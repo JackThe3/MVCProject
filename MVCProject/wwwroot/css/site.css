@@ -54,6 +54,8 @@ table th {
     font-size: 18px;
     line-height: 1.33;
     border-radius: 25px;
+    vertical-align: middle;
+    align-items: center;
 }
 
 tbody td {

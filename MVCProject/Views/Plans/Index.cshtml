@@ -63,7 +63,10 @@
         <tr>
                 <td class="fw-bold">
                             <input class="checkItem" type="checkbox">
-                <button type="button" class="btn btn-danger btn-circle btn-lg" disabled><i class="bi bi-file-earmark"></i></button>
+
+                            <a href="@Url.Action("Details", "Plans",  new { item.Id })" class="btn btn-circle btn-lg" style="background-color: #f9e2e5 !important; color: #921337; font-size:20px">
+                                <i class="bi bi-file-earmark"></i>
+                            </a>
 
                             @Html.ActionLink(item.Name, "Details","Plans", new { item.Id }, new { @class = "info"})
             </td>
