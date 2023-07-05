@@ -8,7 +8,7 @@
 
 <h4>Plan</h4>
 <hr />
-<div class="row">
+<div class="row" style="padding: 5px;">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -33,15 +33,21 @@
                 <span asp-validation-for="UpdatedBy" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn w-10" style="background-color: #921337 !important; color: white; border-radius: 10px;" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a href="@Url.Action("Index", "Plans")" class=" btn w-10" style="background-color: #921337 !important; color: white; border-radius: 10px;">
+        <i class="bi bi-arrow-left"></i>
+        <span>
+            <strong>Back to List</strong>
+        </span>
+    </a>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
