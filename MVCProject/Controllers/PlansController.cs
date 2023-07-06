@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using MVCProject.Data;
 using MVCProject.Models;
@@ -146,14 +147,24 @@ namespace MVCProject.Controllers
         //
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Owner,Status,UpdatedBy")] Plan plan)
+        public async Task<IActionResult> Create (Plan plan)
         {
-            plan.CreatedAt = DateTime.Now;
-            plan.UpdatedAt = DateTime.Now;
-
+         
             if (ModelState.IsValid)
             {
-                _context.Add(plan);
+                var dbPost = new Plan
+                {
+                    Id = plan.Id,
+                    Name = plan.Name,
+                    Owner = plan.Owner,
+                    Status = plan.Status,
+                    UpdatedBy = plan.UpdatedBy,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
+                };
+
+           
+                _context.Add(dbPost);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -181,7 +192,7 @@ namespace MVCProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Owner,CreatedAt,Status,UpdatedBy")] Plan plan)
+        public async Task<IActionResult> Edit(int id, Plan plan)
         {
 
             if (id != plan.Id)
@@ -191,10 +202,19 @@ namespace MVCProject.Controllers
             
             if (ModelState.IsValid)
             {
+               
                 try
                 {
-                    plan.UpdatedAt = DateTime.Now;
-                    _context.Update(plan);
+                    var dbPost = _context.Plan.Find(id);
+
+                    dbPost!.Id = plan.Id;
+                    dbPost.Name = plan.Name;
+                    dbPost.Owner = plan.Owner;
+                    dbPost.Status = plan.Status;
+                    dbPost.UpdatedBy = plan.UpdatedBy;
+                    dbPost.UpdatedAt = DateTime.Now;
+                
+                    _context.Update(dbPost);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
